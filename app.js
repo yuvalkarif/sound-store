@@ -8,12 +8,13 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var catalogRouter = require("./routes/catalog");
 
+require("dotenv").config();
+
 var app = express();
 
 //Set up mongoose connection
 var mongoose = require("mongoose");
-var mongoDB =
-  "mongodb+srv://apoxtpi:23121999Yk@cluster0.82aps.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var mongoDB = process.env.DB_KEY;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
