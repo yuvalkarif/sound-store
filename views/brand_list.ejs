@@ -8,18 +8,15 @@
   <body>
     <h1><%= title %></h1>
     <ul>
-      <% items.forEach(item => { %>
+      <% brands.forEach(brand=> { %>
       <li>
         <ul>
-          <li>
-            <a href="<%=item.url%>"><%=item.model%></a>
-          </li>
-          <li><%= item.brand.name %></li>
-          <% if (!item.summary ==null) { %>
-          <li><%= item.summary %></li>
+          <li><a href="<%=brand.url%> "><%=brand.name%></a></li>
+          <% if (brand.origin !=null) { %>
+          <li><%= brand.origin %></li>
+          <% } %> <% if (!brand.summary !=null) { %>
+          <li><%= brand.summary %></li>
           <% } %>
-          <li><%= item.type.attr %></li>
-          <li><%= item.stock %></li>
         </ul>
       </li>
       <% }) %>

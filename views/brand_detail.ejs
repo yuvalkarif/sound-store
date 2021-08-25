@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <p>Welcome to the <%= title %> Overview</p>
+  <body>
+    <h1><%= brand.name %></h1>
+
+    <ul>
+      <li><%=brand.name%></li>
+      <% if (brand.origin !=null) { %>
+      <li><%= brand.origin %></li>
+      <% } %> <% if (!brand.summary !=null) { %>
+      <li><%= brand.summary %></li>
+      <% } %>
+      <a href="<%=brand.url%>/edit"><button type="button">Edit</button></a>
+    </ul>
+  </body>
+</html>

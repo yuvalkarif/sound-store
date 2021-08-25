@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <p>Welcome to the <%= title %></p>
+  <body>
+    <h1><%= title %></h1>
+
+    <ul>
+      <li>
+        <a href="<%=type.url%>"><%=type.attr%></a>
+      </li>
+      <li><%= type.connection %></li>
+      <a href="<%=type.url%>/edit"><button>Edit</button></a>
+    </ul>
+  </body>
+</html>

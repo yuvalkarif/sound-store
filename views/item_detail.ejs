@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <p>Welcome to the <%= title %></p>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <li><%=item.model%></li>
+      <li><a href="<%=item.brand.url %>"><%=item.brand.name%></a></li>
+      <% if (!item.summary ==null) { %>
+      <li><%= item.summary %></li>
+      <% } %>
+      <li>
+        <a href="<%=item.type.url %>"><%=item.type.attr%></a>
+      </li>
+      <li><%= item.stock %></li>
+      <a href="<%=item.url%>/edit"><button>Edit</button></a>
+    </ul>
+  </body>
+</html>

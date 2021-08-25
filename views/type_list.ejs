@@ -8,18 +8,13 @@
   <body>
     <h1><%= title %></h1>
     <ul>
-      <% items.forEach(item => { %>
+      <% types.forEach(type => { %>
       <li>
         <ul>
           <li>
-            <a href="<%=item.url%>"><%=item.model%></a>
+            <a href="<%=type.url%>"><%=type.attr%></a>
           </li>
-          <li><%= item.brand.name %></li>
-          <% if (!item.summary ==null) { %>
-          <li><%= item.summary %></li>
-          <% } %>
-          <li><%= item.type.attr %></li>
-          <li><%= item.stock %></li>
+          <li><%= type.connection %></li>
         </ul>
       </li>
       <% }) %>
