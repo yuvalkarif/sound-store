@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <p>Welcome to the <%= title %></p>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <% items.forEach(item => { %>
+      <li>
+        <ul>
+          <li>
+            <a href="/catalog/i/<%=item._id %>"><%=item.model%></a>
+            <span></span>
+          </li>
+          <li><%= item.brand.name %></li>
+          <% if (!item.summary ==null) { %>
+          <li><%= item.summary %></li>
+          <% } %>
+          <li><%= item.type.attr %></li>
+          <li><%= item.stock %></li>
+        </ul>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

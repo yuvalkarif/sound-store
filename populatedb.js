@@ -150,7 +150,7 @@ function createItems(cb) {
       },
       function (callback) {
         itemCreate(
-          "Sony WF-1000XM3",
+          "WF-1000XM3",
           brands[1],
           "True wireless earbuds are a dime a dozen, and the Sony WF-1000XM3 makes it easy to justify the cost. The design and comfort are good, and connection strength is consistent.If you want stylish noise cancelling earbuds, the WF-1000XM3 needs to be at the top of your list.",
           types[0],
@@ -161,7 +161,7 @@ function createItems(cb) {
       },
       function (callback) {
         itemCreate(
-          "Sony MDR-7506",
+          "MDR-7506",
           brands[1],
           "The Sony MDR-7506 headphones might not be the best for enjoying your brand new listening station, but there's a reason these are a standard when it comes to audio production and mixing.",
           types[2],
@@ -174,7 +174,7 @@ function createItems(cb) {
         itemCreate(
           "Ear 1",
           brands[3],
-          "Nothing's first attempt at true wireless earbuds checks a lot of the right boxes. At only 4.7g, these are some of the lightest and most comfortable earbuds around. The Nothing Ear 1 also sounds pretty good, has active noise cancellation, and has a great microphone.",
+          "Nothing's first attempt at true wireless earbuds checks a lot of the right boxes. At only 4.7g, these are some of the lightest and most comfortable earbuds around.",
           types[0],
           "Out of Stock",
           99,

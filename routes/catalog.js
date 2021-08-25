@@ -1,9 +1,10 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
+var item_controller = require("../controllers/itemController");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Catalog' });
-});
+router.get("/", item_controller.item_list);
+router.get("/i/:id", item_controller.item_detail);
 
 module.exports = router;
