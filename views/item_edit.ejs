@@ -12,9 +12,6 @@
       <input type="text" id="model" name="model" value="<%=item.model %>" />
       <label for="brand">Brand:</label>
       <select type="text" id="brand" name="brand"  >
-          <% if (item.brand == undefined) { %>
-           
-          <% } %>
         <option value="<%=item.brand.id %>"><%=item.brand.name %></option>
         <% brands.forEach(brand => { %>
             <% if (item.brand.id != brand.id) { %>

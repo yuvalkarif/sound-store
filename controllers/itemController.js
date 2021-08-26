@@ -72,7 +72,7 @@ exports.item_edit_get = function (req, res, next) {
       if (err) {
         return next(err);
       }
-      console.log(results);
+
       res.render("item_edit", {
         title: "Item Edit",
         item: results.item,
@@ -104,7 +104,7 @@ exports.item_edit_post = [
   body("stock.*").escape(),
   (req, res, next) => {
     var errors = validationResult(req);
-    console.log("req body", req.body);
+
     var editedItem = new Item({
       model: req.body.model,
       brand: req.body.brand,
@@ -114,8 +114,7 @@ exports.item_edit_post = [
       price: req.body.price,
       _id: req.params.id,
     });
-    console.log("errors", errors);
-    console.log("editedItem", editedItem);
+
     if (!errors.isEmpty()) {
       async.parallel(
         {

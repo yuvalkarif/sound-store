@@ -13,6 +13,8 @@ router.get("/item/:id", item_controller.item_detail);
 router.get("/item/:id/edit", item_controller.item_edit_get);
 router.post("/item/:id/edit", item_controller.item_edit_post);
 router.get("/brand/:id", brand_controller.brand_detail);
+router.get("/brand/:id/edit", brand_controller.brand_edit_get);
+router.post("/brand/:id/edit", brand_controller.brand_edit_post);
 router.get("/type/:id", type_controller.type_detail);
 
 module.exports = router;
