@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <p>Welcome to the <%= title %></p>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST" >
+      <label for="model">Model:</label>
+      <input type="text" id="model" name="model" value="<%=item.model %>" />
+      <label for="brand">Brand:</label>
+      <select type="text" id="brand" name="brand"  >
+          <% if (item.brand == undefined) { %>
+           
+          <% } %>
+        <option value="<%=item.brand.id %>"><%=item.brand.name %></option>
+        <% brands.forEach(brand => { %>
+            <% if (item.brand.id != brand.id) { %>
+                <option value="<%=brand.id %>"><%=brand.name %></option>
+            <% } %>
+         
+        <% }) %>
+        </select>
+        <select type="text" id="type" name="type"  >
+            <option value="<%=item.type.id %>"><%=item.type.attr %></option>
+            <% types.forEach(type => { %>
+                <% if (item.type.id!= type.id) { %>
+                    <option value="<%=type.id %>"><%=type.attr %></option>
+                <% } %>
+             
+            <% }) %>
+            </select>
+        <label for="summary">Summary:</label>
+        <textarea  id="summary" name="summary" value="<%-item.summary %>">
+            <%- item.summary %>
+        </textarea>
+        <label for="stock">Stock:</label>
+      <select type="text" id="stock" name="stock" value="<%=item.stock %>">
+        <option value="<%="In Stock"%>"><%="In Stock"%></option>
+        <option value="<%="Few Left"%>"><%="Few Left"%></option>
+        <option value="<%="Out of Stock"%>"><%="Out of Stock"%></option>
+    </select>
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" value="<%=item.price %>" />
+      <button type="submit">Submit</button>
+    </form>
+    <% if (errors != null) { %>
+     <% errors.forEach(error => { %>
+        <p><%=error.msg %></p>
+     <% }) %>
+    <% } %>
+    
+  </body>
+</html>

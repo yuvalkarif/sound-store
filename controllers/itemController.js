@@ -1,6 +1,8 @@
 var Item = require("../models/item");
 var Brand = require("../models/brand");
 var Type = require("../models/type");
+var async = require("async");
+const { body, validationResult } = require("express-validator");
 
 // Display list of all items.
 exports.item_list = function (req, res, next) {
@@ -50,11 +52,116 @@ exports.item_delete_post = function (req, res) {
 };
 
 // Display item update form on GET.
-exports.item_update_get = function (req, res) {
-  res.send("NOT IMPLEMENTED: Author update GET");
+exports.item_edit_get = function (req, res, next) {
+  async.parallel(
+    {
+      item: function (callback) {
+        Item.findById(req.params.id)
+          .populate("brand")
+          .populate("type")
+          .exec(callback);
+      },
+      brands: function (callback) {
+        Brand.find(callback);
+      },
+      types: function (callback) {
+        Type.find(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      console.log(results);
+      res.render("item_edit", {
+        title: "Item Edit",
+        item: results.item,
+        brands: results.brands,
+        types: results.types,
+        errors: null,
+      });
+    }
+  );
 };
 
-// Handle Author update on POST.
-exports.item_update_post = function (req, res) {
-  res.send("NOT IMPLEMENTED: item update POST");
-};
+// Handle Author edit on POST.
+exports.item_edit_post = [
+  body("model", "Model must not be empty.")
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body("summary", "Summary must not be empty and between 1 to 300 words.")
+    .trim()
+    .isLength({ min: 1, max: 380 })
+    .escape(),
+  body("price", "Price should be above 0.")
+    .trim()
+    .isLength({ min: 1 })
+    .isInt({ gt: 0 })
+    .escape(),
+  body("brand.*").trim().escape(),
+  body("type.*").escape(),
+  body("stock.*").escape(),
+  (req, res, next) => {
+    var errors = validationResult(req);
+    console.log("req body", req.body);
+    var editedItem = new Item({
+      model: req.body.model,
+      brand: req.body.brand,
+      type: req.body.type,
+      summary: req.body.summary,
+      stock: req.body.stock,
+      price: req.body.price,
+      _id: req.params.id,
+    });
+    console.log("errors", errors);
+    console.log("editedItem", editedItem);
+    if (!errors.isEmpty()) {
+      async.parallel(
+        {
+          brands: function (callback) {
+            Brand.find(callback);
+          },
+          types: function (callback) {
+            Type.find(callback);
+          },
+          itemBrand: function (callback) {
+            Brand.findById(editedItem.brand).exec(callback);
+          },
+          itemType: function (callback) {
+            Type.findById(editedItem.type).exec(callback);
+          },
+        },
+        function (err, results) {
+          if (err) {
+            return next(err);
+          }
+          editedItem.type = results.itemType;
+          editedItem.brand = results.itemBrand;
+
+          res.render("item_edit", {
+            title: "Item Edit",
+            item: editedItem,
+            brands: results.brands,
+            types: results.types,
+            errors: errors.array(),
+          });
+        }
+      );
+      return;
+    } else {
+      Item.findByIdAndUpdate(
+        req.params.id,
+        editedItem,
+        {},
+        function (err, theitem) {
+          if (err) {
+            return next(err);
+          }
+          // Successful - redirect to book detail page.
+          res.redirect(theitem.url);
+        }
+      );
+    }
+  },
+];
