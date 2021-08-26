@@ -16,5 +16,6 @@ router.get("/brand/:id", brand_controller.brand_detail);
 router.get("/brand/:id/edit", brand_controller.brand_edit_get);
 router.post("/brand/:id/edit", brand_controller.brand_edit_post);
 router.get("/type/:id", type_controller.type_detail);
+router.get("/type/:id/edit", type_controller.type_edit_get);
 
 module.exports = router;

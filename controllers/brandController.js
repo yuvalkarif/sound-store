@@ -27,14 +27,18 @@ exports.brand_edit_get = function (req, res, next) {
     if (err) {
       return next(err);
     }
-    res.render("brand_edit", { title: "Edit Brand", brand: brand });
+    res.render("brand_edit", {
+      title: "Edit Brand",
+      brand: brand,
+      errors: null,
+    });
   });
 };
 
 exports.brand_edit_post = [
   body(
     "name",
-    "Please fill the name in the name with no more than 30 characters."
+    "Please fill the name in the name, with no more than 30 characters ."
   )
     .trim()
     .isLength({ min: 1, max: 30 })
@@ -61,8 +65,8 @@ exports.brand_edit_post = [
     if (!errors.isEmpty()) {
       res.render("brand_edit", {
         title: "Brand Edit",
-        errors: errors,
-        brand: brand,
+        errors: errors.array(),
+        brand: editedBrand,
       });
       return;
     } else {

@@ -21,3 +21,12 @@ exports.type_detail = function (req, res, next) {
     res.render("type_detail", { title: "Type Detail", type: type });
   });
 };
+
+exports.type_edit_get = function (req, res, next) {
+  Type.findById(req.params.id).exec(function (err, type) {
+    if (err) {
+      return next(err);
+    }
+    res.render("type_edit", { title: "Edit Type", type: type, errors: null });
+  });
+};

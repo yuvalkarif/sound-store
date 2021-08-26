@@ -17,5 +17,10 @@
       <textarea name="summary" id="summary" value="<%=brand.summary%>"><%=brand.summary%></textarea>
       <button type="submit">Submit Changes</button>
       </form>
+      <% if (errors !=null) { %>
+        <% errors.forEach(error => { %>
+            <p><%=error.msg %> </p>
+        <% }) %>
+      <% } %>
   </body>
 </html>
