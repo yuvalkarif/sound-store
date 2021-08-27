@@ -1,34 +1,50 @@
 @import "reset";
 @import "typography";
+@import "header";
+@mixin outline-btn-theme($bgColor: white, $mainColor: black) {
+  font: inherit;
+  font-weight: 600;
+  background: $bgColor;
+  color: $mainColor;
+  border-radius: 30rem;
+  border: 2rem solid $mainColor;
+  box-shadow: 0 0.5em 1em 1rem rgba($color: $mainColor, $alpha: 0.05);
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  transition: transform 50ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5%);
+  }
+}
+@mixin block-btn-theme($bgColor: black, $mainColor: white) {
+  font: inherit;
+  font-weight: 600;
+  background: $bgColor;
+  color: $mainColor;
+  border-radius: 30rem;
+  border: 2rem solid $bgColor;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba($color: $bgColor, $alpha: 0.05);
+  transition: transform 50ms ease-in-out;
+  &:hover {
+    cursor: pointer;
 
+    transform: translateY(-5%);
+  }
+}
+$redColor: red;
+$textHoverColor: grey;
+$alt-textHoverColor: darkgrey;
 body {
   background: rgb(252, 252, 252);
 }
-.header {
-  display: flex;
-  justify-content: space-around;
-  margin: 2em 1em;
-  flex-wrap: wrap;
-  & * {
-    padding: 0.2em 0;
-  }
 
-  h1 {
-    font-size: 45rem;
-    font-weight: 700;
-  }
-  div {
-    display: flex;
-    align-items: center;
-    a {
-      padding-top: 0.8em;
-      margin: 0 2em;
-      font-weight: 600;
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-}
 h2 {
   font-weight: 700;
   font-size: 30rem;
@@ -55,6 +71,8 @@ h2 {
   font-weight: 500;
   box-shadow: 0 0.75em 2em 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.1);
   border-radius: 1em;
+  max-height: fit-content;
+  min-height: 12em;
 
   h4,
   p {
@@ -70,34 +88,19 @@ h2 {
     font-size: 20rem;
   }
 }
-@mixin outline-btn-theme($bgColor: white, $mainColor: black) {
-  font: inherit;
-  font-weight: 600;
-  background: $bgColor;
-  color: $mainColor;
-  border-radius: 30rem;
-  border: 2rem solid $mainColor;
-  padding: 0.6em 0.6em;
-  margin: 0.5em auto;
-  display: block;
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
-  }
-}
-@mixin block-btn-theme($bgColor: black, $mainColor: white) {
-  font: inherit;
-  font-weight: 600;
-  background: $bgColor;
-  color: $mainColor;
-  border-radius: 30rem;
-  border: 2rem solid $bgColor;
-  padding: 0.6em 0.6em;
-  margin: 0.5em auto;
-  display: block;
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1em 0;
+  a {
+    &:first-of-type {
+      @include outline-btn-theme;
+      margin: 0 0.2em;
+      display: block;
+    }
+    @include block-btn-theme;
+    margin: 0 0.2em;
   }
 }
 
@@ -183,8 +186,9 @@ h2 {
     text-decoration: none;
   }
   label {
-    width: min(85%, 660rem);
+    width: min(95%, 660rem);
     font-weight: 600;
+    font-size: 20rem;
 
     & * {
       margin: 0 1em;
@@ -214,4 +218,36 @@ h2 {
   button {
     @include outline-btn-theme;
   }
+}
+
+.delete-form {
+  p {
+    text-align: center;
+    color: $redColor;
+    font-weight: 600;
+    font-size: 25rem;
+  }
+  button {
+    @include block-btn-theme($redColor, white);
+  }
+}
+
+@mixin text-link-hover($setColor: darkgrey, $altColor: grey) {
+  color: $setColor !important;
+  transition: all 150ms ease-in-out;
+  display: inline-block;
+  border-radius: 0.5em;
+
+  &:hover {
+    color: $altColor !important;
+    transform: translateX(2%);
+  }
+}
+.text-link-hover {
+  @include text-link-hover(grey, blue);
+}
+
+.browse-container {
+  width: min(880rem, 75vw);
+  margin: 2em auto;
 }

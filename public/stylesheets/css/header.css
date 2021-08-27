@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0em;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+.header * {
+  padding: 0.2em 0;
+}
+.header h1 {
+  font-size: 45rem;
+  font-weight: 700;
+}
+.header div {
+  display: flex;
+  align-items: center;
+}
+.header div a {
+  padding-top: 0.8em;
+  margin: 0 2em;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+/*# sourceMappingURL=header.css.map */

@@ -1,6 +1,7 @@
 var Item = require("../models/item");
 var Brand = require("../models/brand");
 var Type = require("../models/type");
+var async = require("async");
 const { body, validationResult } = require("express-validator");
 
 exports.brand_list = function (req, res, next) {
@@ -14,12 +15,27 @@ exports.brand_list = function (req, res, next) {
 };
 
 exports.brand_detail = function (req, res, next) {
-  Brand.findById(req.params.id).exec(function (err, brand) {
-    if (err) {
-      return next(err);
+  async.parallel(
+    {
+      brand: function (callback) {
+        Brand.findById(req.params.id).exec(callback);
+      },
+      items: function (callback) {
+        Item.find({ brand: req.params.id }).populate("type").exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      res.render("brand_detail", {
+        title: "Brand",
+        brand: results.brand,
+        items: results.items,
+        errors: null,
+      });
     }
-    res.render("brand_detail", { title: "Brand", brand: brand });
-  });
+  );
 };
 
 exports.brand_edit_get = function (req, res, next) {

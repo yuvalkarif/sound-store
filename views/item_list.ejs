@@ -7,19 +7,12 @@
   <body>
     <%-include ./partials/header.ejs %>
     <h2><%= title %></h2>
-    <section class="item-list-container">
-      <% items.forEach(item => { %>
-      <div class="item-container">
-        <!-- <a href="<%=item.url%>"></a> -->
-        <h3><%=item.model%></h3>
-        <h4><%= item.brand.name %></h4>
-        <p><%= item.type.attr %></p>
-        <p><%= item.stock %></p>
-        <a class="link-button" href="<%=item.url %>">Learn more</a>
-      </div>
-      <% }) %>
-    </section>
-    <a href="item/add/">Add</a>
-    <a href="item/delete/"><button>Delete</button></a>
+
+    <%-include ./partials/items_list.ejs%>
+
+    <div class="btns">
+      <a href="brand/">Browse Brands</a>
+      <a href="item/add/">Add an Item</a>
+    </div>
   </body>
 </html>

@@ -2,37 +2,49 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
+  
   <body>
-    <h1><%= title %></h1>
-    <form method="POST" >
-      <label for="model">Model:</label>
-      <input type="text" id="model" name="model" value="" placeholder="Model name of the Item"/>
-      <label for="brand">Brand:</label>
-      <select type="text" id="brand" name="brand"  >
+    <%-include ./partials/header.ejs  %> 
+    <h2><%= title %></h2>
+    <form class="item-edit-container"method="POST" >
+      <label for="model">Model:
+        <input type="text" id="model" name="model" value="" placeholder="Model name of the Item"/>
+      </label>
+     
+      <label for="brand">Brand:
+        <select type="text" id="brand" name="brand"  >
         
-        <% brands.forEach(brand => { %>
-                <option value="<%=brand.id %>"><%=brand.name %></option>
-        <% }) %>
-        </select>
+          <% brands.forEach(brand => { %>
+                  <option value="<%=brand.id %>"><%=brand.name %></option>
+          <% }) %>
+          </select>
+      </label>
+      <label for="type">Type:
         <select type="text" id="type" name="type"  >
             <% types.forEach(type => { %>
                     <option value="<%=type.id %>"><%=type.attr %></option>
             <% }) %>
             </select>
-        <label for="summary">Summary:</label>
-        <textarea  id="summary" name="summary" placeholder="<%="Short summary about the item."%>">
-        </textarea>
-        <label for="stock">Stock:</label>
-      <select type="text" id="stock" name="stock" value="">
-        <option value="<%="In Stock"%>"><%="In Stock"%></option>
-        <option value="<%="Few Left"%>"><%="Few Left"%></option>
-        <option value="<%="Out of Stock"%>"><%="Out of Stock"%></option>
-    </select>
-      <label for="price">Price:</label>
-      <input type="text" id="price" name="price" value="" placeholder="Price of the item in $" />
+            </label>
+        <label for="summary">Summary:
+          <textarea  id="summary" name="summary" placeholder="<%="Short summary about the item."%>">
+          </textarea>
+        </label>
+       
+        <label for="stock">Stock:
+          <select type="text" id="stock" name="stock" value="">
+            <option value="<%="In Stock"%>"><%="In Stock"%></option>
+            <option value="<%="Few Left"%>"><%="Few Left"%></option>
+            <option value="<%="Out of Stock"%>"><%="Out of Stock"%></option>
+        </select>
+        </label>
+      
+      <label for="price">Price:
+        <input type="text" id="price" name="price" value="" placeholder="Price of the item in $" />
+      </label>
+      
       <button type="submit">Submit</button>
     </form>
     <% if (errors != null) { %>

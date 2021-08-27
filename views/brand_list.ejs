@@ -2,24 +2,25 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets//css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
+
   <body>
-    <h1><%= title %></h1>
-    <ul>
+    <h2><%= title %></h2>
+    <section class="item-list-container">
       <% brands.forEach(brand=> { %>
-      <li>
-        <ul>
-          <li><a href="<%=brand.url%> "><%=brand.name%></a></li>
-          <% if (brand.origin !=null) { %>
-          <li><%= brand.origin %></li>
-          <% } %> <% if (!brand.summary !=null) { %>
-          <li><%= brand.summary %></li>
-          <% } %>
-        </ul>
-      </li>
+      <div class="item-container">
+        <h3><%=brand.name%></h3>
+        <% if (brand.origin !=null) { %>
+        <h4><%= brand.origin %></h4>
+        <% } %> <% if (!brand.summary !=null) { %>
+        <p><%= brand.summary %></p>
+        <% } %>
+        <div class="btns">
+          <a href="<%=brand.url%>">Learn More</a>
+        </div>
+      </div>
       <% }) %>
-    </ul>
+    </section>
   </body>
 </html>

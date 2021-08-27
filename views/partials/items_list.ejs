@@ -1,0 +1,12 @@
+<section class="item-list-container">
+  <% items.forEach(item => { %>
+  <div class="item-container">
+    <!-- <a href="<%=item.url%>"></a> -->
+    <h3><%=item.model%></h3>
+    <h4><%= item.brand.name %></h4>
+    <p><%= item.type.attr %></p>
+    <p><%= item.stock %></p>
+    <a class="link-button" href="<%=item.url %>">Learn more</a>
+  </div>
+  <% }) %>
+</section>

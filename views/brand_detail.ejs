@@ -2,20 +2,26 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %> Overview</p>
-  <body>
-    <h1><%= brand.name %></h1>
 
-    <ul>
-      <li><%=brand.name%></li>
+  <body>
+    <%-include ./partials/header.ejs %>
+    <h2>Brand Overview</h2>
+    <section class="item-detail-container">
+      <h3><%=brand.name%></h3>
       <% if (brand.origin !=null) { %>
-      <li><%= brand.origin %></li>
+      <h4><%= brand.origin %></h4>
       <% } %> <% if (!brand.summary !=null) { %>
-      <li><%= brand.summary %></li>
+      <p><%= brand.summary %></p>
       <% } %>
-      <a href="<%=brand.url%>/edit"><button type="button">Edit</button></a>
-    </ul>
+      <div class="btns">
+        <a href="<%=brand.url%>/edit">Edit</a>
+      </div>
+    </section>
+    <section class="browse-container">
+      <h2>Browse the Brand Products</h2>
+      <%-include ./partials/items_list.ejs%>
+    </section>
   </body>
 </html>

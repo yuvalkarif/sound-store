@@ -147,15 +147,12 @@ body {
   color: #222;
 }
 
-body {
-  background: #fcfcfc;
-}
-
 .header {
   display: flex;
   justify-content: space-around;
-  margin: 2em 1em;
+  margin: 2em 0em;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .header * {
   padding: 0.2em 0;
@@ -174,6 +171,10 @@ body {
   font-weight: 600;
   text-decoration: none;
   color: inherit;
+}
+
+body {
+  background: #fcfcfc;
 }
 
 h2 {
@@ -203,6 +204,8 @@ h2 {
   font-weight: 500;
   box-shadow: 0 0.75em 2em 1rem rgba(60, 42, 100, 0.1);
   border-radius: 1em;
+  max-height: fit-content;
+  min-height: 12em;
 }
 .item-container h4,
 .item-container p {
@@ -217,6 +220,52 @@ h2 {
   font-size: 20rem;
 }
 
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1em 0;
+}
+.btns a {
+  font: inherit;
+  font-weight: 600;
+  background: black;
+  color: white;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 50ms ease-in-out;
+  margin: 0 0.2em;
+}
+.btns a:first-of-type {
+  font: inherit;
+  font-weight: 600;
+  background: white;
+  color: black;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  transition: transform 50ms ease-in-out;
+  margin: 0 0.2em;
+  display: block;
+}
+.btns a:first-of-type:hover {
+  cursor: pointer;
+  transform: translateY(-5%);
+}
+.btns a:hover {
+  cursor: pointer;
+  transform: translateY(-5%);
+}
+
 .link-button {
   font: inherit;
   font-weight: 600;
@@ -224,13 +273,16 @@ h2 {
   color: black;
   border-radius: 30rem;
   border: 2rem solid black;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
   padding: 0.6em 0.6em;
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
+  transition: transform 50ms ease-in-out;
 }
 .link-button:hover {
   cursor: pointer;
+  transform: translateY(-5%);
 }
 
 .item-detail-container {
@@ -295,6 +347,8 @@ h2 {
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 50ms ease-in-out;
   margin: 0 0.2em;
 }
 .item-detail-container div a:first-of-type {
@@ -304,17 +358,21 @@ h2 {
   color: black;
   border-radius: 30rem;
   border: 2rem solid black;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
   padding: 0.6em 0.6em;
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
+  transition: transform 50ms ease-in-out;
   margin: 0 0.2em;
 }
 .item-detail-container div a:first-of-type:hover {
   cursor: pointer;
+  transform: translateY(-5%);
 }
 .item-detail-container div a:hover {
   cursor: pointer;
+  transform: translateY(-5%);
 }
 
 .item-edit-container {
@@ -334,8 +392,9 @@ h2 {
   text-decoration: none;
 }
 .item-edit-container label {
-  width: min(85%, 660rem);
+  width: min(95%, 660rem);
   font-weight: 600;
+  font-size: 20rem;
   padding-top: 0.5em;
   margin-bottom: 1em;
   display: flex;
@@ -367,13 +426,57 @@ h2 {
   color: black;
   border-radius: 30rem;
   border: 2rem solid black;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
   padding: 0.6em 0.6em;
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
+  transition: transform 50ms ease-in-out;
 }
 .item-edit-container button:hover {
   cursor: pointer;
+  transform: translateY(-5%);
+}
+
+.delete-form p {
+  text-align: center;
+  color: red;
+  font-weight: 600;
+  font-size: 25rem;
+}
+.delete-form button {
+  font: inherit;
+  font-weight: 600;
+  background: red;
+  color: white;
+  border-radius: 30rem;
+  border: 2rem solid red;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba(255, 0, 0, 0.05);
+  transition: transform 50ms ease-in-out;
+}
+.delete-form button:hover {
+  cursor: pointer;
+  transform: translateY(-5%);
+}
+
+.text-link-hover {
+  color: grey !important;
+  transition: all 150ms ease-in-out;
+  display: inline-block;
+  border-radius: 0.5em;
+}
+.text-link-hover:hover {
+  color: blue !important;
+  transform: translateX(2%);
+}
+
+.browse-container {
+  width: min(880rem, 75vw);
+  margin: 2em auto;
 }
 
 /*# sourceMappingURL=main.css.map */
