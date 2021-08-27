@@ -141,13 +141,32 @@ exports.item_add_post = [
 ];
 
 // Display item delete form on GET.
-exports.item_delete_get = function (req, res) {
-  res.send("NOT IMPLEMENTED: item delete GET");
+exports.item_delete_get = function (req, res, next) {
+  Item.findById(req.params.id)
+    .populate("brand")
+    .populate("type")
+    .exec(function (err, item) {
+      if (err) {
+        return next(err);
+      }
+      console.log(item);
+      res.render("item_delete", {
+        title: "Delete Item",
+        errors: null,
+        item: item,
+      });
+    });
 };
 
 // Handle item delete on POST.
 exports.item_delete_post = function (req, res) {
-  res.send("NOT IMPLEMENTED: item delete POST");
+  Item.findByIdAndDelete(req.params.id)
+  .exec(function (err, item) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/catalog/item");
+  });
 };
 
 // Display item update form on GET.

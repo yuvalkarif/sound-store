@@ -10,13 +10,17 @@
     <ul>
       <li><%=item.model%></li>
       <li><a href="<%=item.brand.url %>"><%=item.brand.name%></a></li>
+
       <li><%= item.summary %></li>
+
       <li>
         <a href="<%=item.type.url %>"><%=item.type.attr%></a>
       </li>
       <li><%= item.stock %></li>
-      <a href="<%=item.url%>/edit"><button>Edit</button></a>
-      <a href="<%=item.url%>/delete"><button>Delete</button></a>
+      <form method="POST">
+        <p>Are you sure you want to delete this item?</p>
+        <button type="submit">Delete</button>
+      </form>
     </ul>
   </body>
 </html>
