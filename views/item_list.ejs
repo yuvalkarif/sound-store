@@ -2,29 +2,24 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
   <p>Welcome to the <%= title %></p>
   <body>
     <h1><%= title %></h1>
-    <ul>
+    <section class="item-list-container">
       <% items.forEach(item => { %>
-      <li>
-        <ul>
-          <li>
-            <a href="<%=item.url%>"><%=item.model%></a>
-          </li>
-          <li><%= item.brand.name %></li>
-          <% if (!item.summary ==null) { %>
-          <li><%= item.summary %></li>
-          <% } %>
-          <li><%= item.type.attr %></li>
-          <li><%= item.stock %></li>
-        </ul>
-      </li>
+      <div class="item-container">
+        <!-- <a href="<%=item.url%>"></a> -->
+        <h3><%=item.model%></h3>
+        <h4><%= item.brand.name %></h4>
+        <p><%= item.type.attr %></p>
+        <p><%= item.stock %></p>
+        <a class="link-button" href="<%=item.url %>">Learn more</a>
+      </div>
       <% }) %>
-      <a href="item/add/"><button>Add</button></a>
-      <a href="item/delete/"><button>Delete</button></a>
-    </ul>
+    </section>
+    <a href="item/add/">Add</a>
+    <a href="item/delete/"><button>Delete</button></a>
   </body>
 </html>
