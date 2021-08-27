@@ -32,14 +32,113 @@ exports.item_detail = function (req, res, next) {
 };
 
 // Display item create form on GET.
-exports.item_create_get = function (req, res) {
-  res.send("NOT IMPLEMENTED: item create GET");
+exports.item_add_get = function (req, res, next) {
+  async.parallel(
+    {
+      brands: function (callback) {
+        Brand.find(callback);
+      },
+      types: function (callback) {
+        Type.find(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+
+      res.render("item_add", {
+        title: "Item Edit",
+        brands: results.brands,
+        types: results.types,
+        errors: null,
+      });
+    }
+  );
 };
 
 // Handle item create on POST.
-exports.item_create_post = function (req, res) {
-  res.send("NOT IMPLEMENTED: item create POST");
-};
+exports.item_add_post = [
+  body("model", "Model must not be empty.")
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body("summary", "Summary must not be empty and between 1 to 300 words.")
+    .trim()
+    .isLength({ min: 1, max: 380 })
+    .escape(),
+  body("price", "Price should be a number above 0.")
+    .trim()
+    .isInt({ gt: 0 })
+    .escape(),
+  body("brand.*").trim().escape(),
+  body("type.*").escape(),
+  body("stock.*").escape(),
+  (req, res, next) => {
+    var errors = validationResult(req);
+    errors = errors.array();
+    var editedItem = new Item({
+      model: req.body.model,
+      brand: req.body.brand,
+      type: req.body.type,
+      summary: req.body.summary,
+      stock: req.body.stock,
+      price: req.body.price,
+    });
+    Item.find({ model: req.body.model }).exec(function (err, existingItem) {
+      if (err) {
+        return next(err);
+      }
+      if (existingItem != null) {
+        console.log("-----EXISTING-----");
+        errors.push({ msg: "Item model already exists" });
+      }
+    });
+
+    if (errors.length >> 0) {
+      async.parallel(
+        {
+          brands: function (callback) {
+            Brand.find(callback);
+          },
+          types: function (callback) {
+            Type.find(callback);
+          },
+          itemBrand: function (callback) {
+            Brand.findById(editedItem.brand).exec(callback);
+          },
+          itemType: function (callback) {
+            Type.findById(editedItem.type).exec(callback);
+          },
+        },
+        function (err, results) {
+          if (err) {
+            return next(err);
+          }
+          editedItem.type = results.itemType;
+          editedItem.brand = results.itemBrand;
+          console.log(errors);
+          res.render("item_edit", {
+            title: "Item Edit",
+            item: editedItem,
+            brands: results.brands,
+            types: results.types,
+            errors: errors,
+          });
+        }
+      );
+      return;
+    } else {
+      var item = new Item(editedItem);
+      item.save(function (err, newItem) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect(newItem.url);
+      });
+    }
+  },
+];
 
 // Display item delete form on GET.
 exports.item_delete_get = function (req, res) {

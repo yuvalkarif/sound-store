@@ -1,6 +1,7 @@
 var Item = require("../models/item");
 var Brand = require("../models/brand");
 var Type = require("../models/type");
+const { body, validationResult } = require("express-validator");
 
 exports.type_list = function (req, res, next) {
   Type.find({}).exec(function (err, types) {
@@ -30,3 +31,45 @@ exports.type_edit_get = function (req, res, next) {
     res.render("type_edit", { title: "Edit Type", type: type, errors: null });
   });
 };
+
+exports.type_edit_post = [
+  body("attr", "Please fill in the attribute with no more than 30 characters.")
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body(
+    "connection",
+    "Please fill in a valid connection with no more than 30 characters"
+  )
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  (req, res, next) => {
+    var errors = validationResult(req);
+    var editedType = new Type({
+      attr: req.body.attr,
+      connection: req.body.connection,
+      _id: req.params.id,
+    });
+    if (!errors.isEmpty()) {
+      res.render("type_edit", {
+        title: "Edit Type",
+        type: editedType,
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      Type.findByIdAndUpdate(
+        req.params.id,
+        editedType,
+        {},
+        function (err, newType) {
+          if (err) {
+            return next(err);
+          }
+          res.redirect(newType.url);
+        }
+      );
+    }
+  },
+];
