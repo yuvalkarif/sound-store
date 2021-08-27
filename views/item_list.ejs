@@ -4,9 +4,9 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
   <body>
-    <h1><%= title %></h1>
+    <%-include ./partials/header.ejs %>
+    <h2><%= title %></h2>
     <section class="item-list-container">
       <% items.forEach(item => { %>
       <div class="item-container">

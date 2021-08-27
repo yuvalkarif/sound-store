@@ -147,11 +147,49 @@ body {
   color: #222;
 }
 
+body {
+  background: #fcfcfc;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 1em;
+  flex-wrap: wrap;
+}
+.header * {
+  padding: 0.2em 0;
+}
+.header h1 {
+  font-size: 45rem;
+  font-weight: 700;
+}
+.header div {
+  display: flex;
+  align-items: center;
+}
+.header div a {
+  padding-top: 0.8em;
+  margin: 0 2em;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 30rem;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  margin-block: 0.5em;
+}
+
 .item-list-container {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(320rem, 1fr));
-  grid-gap: 5rem;
+  grid-gap: 1em;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -163,7 +201,7 @@ body {
   margin: 1em;
   background-color: white;
   font-weight: 500;
-  box-shadow: 0 7.5rem 10rem 1rem rgba(60, 42, 100, 0.15);
+  box-shadow: 0 0.75em 2em 1rem rgba(60, 42, 100, 0.1);
   border-radius: 1em;
 }
 .item-container h4,
@@ -182,16 +220,159 @@ body {
 .link-button {
   font: inherit;
   font-weight: 600;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   border-radius: 30rem;
   border: 2rem solid black;
-  padding: 0.5em 0.5em;
+  padding: 0.6em 0.6em;
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
 }
 .link-button:hover {
+  cursor: pointer;
+}
+
+.item-detail-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em;
+  margin: 1em auto;
+  background-color: white;
+  font-weight: 500;
+  box-shadow: 0 0.75em 2em 1rem rgba(60, 42, 100, 0.1);
+  border-radius: 1em;
+  width: min(880rem, 75vw);
+}
+.item-detail-container a {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+}
+.item-detail-container h4,
+.item-detail-container p {
+  margin-bottom: 0.2em;
+}
+.item-detail-container h3 {
+  font-weight: 700;
+  font-size: 50rem;
+}
+.item-detail-container h4 {
+  font-weight: 600;
+  font-size: 35rem;
+  text-decoration: 0;
+}
+.item-detail-container p {
+  font-size: 20rem;
+}
+.item-detail-container .summary {
+  font-weight: 700;
+}
+.item-detail-container .stock {
+  font-weight: 600;
+}
+.item-detail-container .price {
+  display: block;
+  font-size: 23rem;
+  margin: 0.1em 0;
+  font-weight: 700;
+}
+.item-detail-container .price span {
+  margin-left: 2rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+.item-detail-container div {
+  display: flex;
+  justify-content: center;
+}
+.item-detail-container div a {
+  font: inherit;
+  font-weight: 600;
+  background: black;
+  color: white;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  margin: 0 0.2em;
+}
+.item-detail-container div a:first-of-type {
+  font: inherit;
+  font-weight: 600;
+  background: white;
+  color: black;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  margin: 0 0.2em;
+}
+.item-detail-container div a:first-of-type:hover {
+  cursor: pointer;
+}
+.item-detail-container div a:hover {
+  cursor: pointer;
+}
+
+.item-edit-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 1em;
+  margin: 1em auto;
+  background-color: white;
+  font-weight: 500;
+  box-shadow: 0 0.75em 2em 1rem rgba(60, 42, 100, 0.1);
+  border-radius: 1em;
+  width: min(600rem, 75vw);
+  align-items: center;
+}
+.item-edit-container a {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+}
+.item-edit-container label {
+  width: min(85%, 660rem);
+  font-weight: 600;
+  padding-top: 0.5em;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: flex-start;
+}
+.item-edit-container label * {
+  margin: 0 1em;
+  width: 100%;
+  border: 2rem solid black;
+  background-color: inherit;
+  border-radius: 1em;
+  padding: 0.5em 0.5em;
+  font-weight: 500;
+  margin-top: -0.5em;
+}
+.item-edit-container label textarea {
+  resize: none;
+  overflow: auto;
+  display: inline-flex;
+  height: 6em;
+  font: inherit;
+  font-weight: 400;
+  padding: 0.8em;
+}
+.item-edit-container button {
+  font: inherit;
+  font-weight: 600;
+  background: white;
+  color: black;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+}
+.item-edit-container button:hover {
   cursor: pointer;
 }
 

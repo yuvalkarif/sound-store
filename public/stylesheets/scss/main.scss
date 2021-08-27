@@ -1,14 +1,51 @@
 @import "reset";
 @import "typography";
 
+body {
+  background: rgb(252, 252, 252);
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 1em;
+  flex-wrap: wrap;
+  & * {
+    padding: 0.2em 0;
+  }
+
+  h1 {
+    font-size: 45rem;
+    font-weight: 700;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    a {
+      padding-top: 0.8em;
+      margin: 0 2em;
+      font-weight: 600;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+h2 {
+  font-weight: 700;
+  font-size: 30rem;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  margin-block: 0.5em;
+}
 .item-list-container {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(320rem, 1fr));
-  grid-gap: 5rem;
+  grid-gap: 1em;
   max-width: 1280px;
   margin: 0 auto;
 }
+
 .item-container {
   display: flex;
   flex-direction: column;
@@ -16,7 +53,7 @@
   margin: 1em;
   background-color: rgb(255, 255, 255);
   font-weight: 500;
-  box-shadow: 0 7.5rem 10rem 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.15);
+  box-shadow: 0 0.75em 2em 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.1);
   border-radius: 1em;
 
   h4,
@@ -33,18 +70,148 @@
     font-size: 20rem;
   }
 }
-.link-button {
+@mixin outline-btn-theme($bgColor: white, $mainColor: black) {
   font: inherit;
   font-weight: 600;
-  background: black;
-  color: white;
+  background: $bgColor;
+  color: $mainColor;
   border-radius: 30rem;
-  border: 2rem solid black;
-  padding: 0.5em 0.5em;
+  border: 2rem solid $mainColor;
+  padding: 0.6em 0.6em;
   margin: 0.5em auto;
   display: block;
   text-decoration: none;
   &:hover {
     cursor: pointer;
+  }
+}
+@mixin block-btn-theme($bgColor: black, $mainColor: white) {
+  font: inherit;
+  font-weight: 600;
+  background: $bgColor;
+  color: $mainColor;
+  border-radius: 30rem;
+  border: 2rem solid $bgColor;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.link-button {
+  @include outline-btn-theme;
+}
+
+.item-detail-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em;
+  margin: 1em auto;
+  background-color: rgb(255, 255, 255);
+  font-weight: 500;
+  box-shadow: 0 0.75em 2em 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.1);
+  border-radius: 1em;
+  width: min(880rem, 75vw);
+  a {
+    color: rgba($color: #000000, $alpha: 0.85);
+    text-decoration: none;
+  }
+  h4,
+  p {
+    margin-bottom: 0.2em;
+  }
+
+  h3 {
+    font-weight: 700;
+    font-size: 50rem;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 35rem;
+    text-decoration: 0;
+  }
+  p {
+    font-size: 20rem;
+  }
+  .summary {
+    font-weight: 700;
+  }
+  .stock {
+    font-weight: 600;
+  }
+  .price {
+    display: block;
+    font-size: 23rem;
+    margin: 0.1em 0;
+    font-weight: 700;
+    span {
+      margin-left: 2rem;
+      color: rgba($color: #000000, $alpha: 0.8);
+    }
+  }
+  div {
+    display: flex;
+    justify-content: center;
+
+    a {
+      &:first-of-type {
+        @include outline-btn-theme;
+        margin: 0 0.2em;
+      }
+      @include block-btn-theme;
+      margin: 0 0.2em;
+    }
+  }
+}
+
+.item-edit-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 1em;
+  margin: 1em auto;
+  background-color: rgb(255, 255, 255);
+  font-weight: 500;
+  box-shadow: 0 0.75em 2em 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.1);
+  border-radius: 1em;
+  width: min(600rem, 75vw);
+  align-items: center;
+  a {
+    color: rgba($color: #000000, $alpha: 0.85);
+    text-decoration: none;
+  }
+  label {
+    width: min(85%, 660rem);
+    font-weight: 600;
+
+    & * {
+      margin: 0 1em;
+      width: 100%;
+      border: 2rem solid rgba($color: #000000, $alpha: 1);
+      background-color: inherit;
+      border-radius: 1em;
+      padding: 0.5em 0.5em;
+      font-weight: 500;
+      margin-top: -0.5em;
+    }
+    padding-top: 0.5em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: flex-start;
+
+    textarea {
+      resize: none;
+      overflow: auto;
+      display: inline-flex;
+      height: 6em;
+      font: inherit;
+      font-weight: 400;
+      padding: 0.8em;
+    }
+  }
+  button {
+    @include outline-btn-theme;
   }
 }

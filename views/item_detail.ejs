@@ -2,21 +2,25 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
   <body>
-    <h1><%= title %></h1>
-    <ul>
-      <li><%=item.model%></li>
-      <li><a href="<%=item.brand.url %>"><%=item.brand.name%></a></li>
-      <li><%= item.summary %></li>
-      <li>
-        <a href="<%=item.type.url %>"><%=item.type.attr%></a>
-      </li>
-      <li><%= item.stock %></li>
-      <a href="<%=item.url%>/edit"><button>Edit</button></a>
-      <a href="<%=item.url%>/delete"><button>Delete</button></a>
-    </ul>
+    <%-include ./partials/header.ejs  %> 
+    <h2><%= title %></h2>
+    <section class="item-detail-container">
+      <h3><%=item.model%></h3>
+      <h4><a href="<%=item.brand.url %>"><%=item.brand.name%></a></h4>
+      <p><a href="<%=item.type.url %>"><%=item.type.attr%></a></p>
+      <p class="summary">
+        <span>Summary</span>
+        <p><%-item.summary%></p>
+      </p>
+      <p class="stock"><%= item.stock %></p>
+      <p class="price"><%=item.price%><span>$</span></p>
+      <div>
+      <a href="<%=item.url%>/edit">Edit</a>
+      <a href="<%=item.url%>/delete">Delete</a>
+    </div>
+    </section>
   </body>
 </html>
