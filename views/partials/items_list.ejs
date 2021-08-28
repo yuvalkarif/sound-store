@@ -6,7 +6,9 @@
     <h4><%= item.brand.name %></h4>
     <p><%= item.type.attr %></p>
     <p><%= item.stock %></p>
-    <a class="link-button" href="<%=item.url %>">Learn more</a>
+    <div class="btns">
+      <a href="<%=item.url%>">Learn More</a>
+    </div>
   </div>
   <% }) %>
 </section>

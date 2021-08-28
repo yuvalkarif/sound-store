@@ -2,22 +2,27 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
+
   <body>
-    <h1><%= title %></h1>
-    <ul>
+    <%-include ./partials/header.ejs %>
+    <h2><%= title %></h2>
+    <section class="item-list-container">
       <% types.forEach(type => { %>
-      <li>
-        <ul>
-          <li>
-            <a href="<%=type.url%>"><%=type.attr%></a>
-          </li>
-          <li><%= type.connection %></li>
-        </ul>
-      </li>
+      <div class="item-container">
+        <h3><%=type.attr%></h3>
+        <h4><%= type.connection %></h4>
+        <div class="btns">
+          <a href="<%=type.url%>">Learn More</a>
+        </div>
+      </div>
       <% }) %>
-    </ul>
+    </section>
+    <div class="btns">
+      <a href="/catalog/brand/">Browse Brands</a>
+      <a href="/catalog/item/">Browse Item</a>
+      <a href="add/">Add a Type</a>
+    </div>
   </body>
 </html>

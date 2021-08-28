@@ -188,7 +188,7 @@ h2 {
 
 .item-list-container {
   display: grid;
-  align-items: center;
+  align-items: flex-start;
   grid-template-columns: repeat(auto-fit, minmax(320rem, 1fr));
   grid-gap: 1em;
   max-width: 1280px;
@@ -204,8 +204,7 @@ h2 {
   font-weight: 500;
   box-shadow: 0 0.75em 2em 1rem rgba(60, 42, 100, 0.1);
   border-radius: 1em;
-  max-height: fit-content;
-  min-height: 12em;
+  min-height: fit-content;
 }
 .item-container h4,
 .item-container p {
@@ -229,21 +228,6 @@ h2 {
 .btns a {
   font: inherit;
   font-weight: 600;
-  background: black;
-  color: white;
-  border-radius: 30rem;
-  border: 2rem solid black;
-  padding: 0.6em 0.6em;
-  margin: 0.5em auto;
-  display: block;
-  text-decoration: none;
-  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
-  transition: transform 50ms ease-in-out;
-  margin: 0 0.2em;
-}
-.btns a:first-of-type {
-  font: inherit;
-  font-weight: 600;
   background: white;
   color: black;
   border-radius: 30rem;
@@ -255,9 +239,24 @@ h2 {
   text-decoration: none;
   transition: transform 50ms ease-in-out;
   margin: 0 0.2em;
+}
+.btns a:last-of-type {
+  font: inherit;
+  font-weight: 600;
+  background: black;
+  color: white;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 50ms ease-in-out;
+  margin: 0 0.2em;
   display: block;
 }
-.btns a:first-of-type:hover {
+.btns a:last-of-type:hover {
   cursor: pointer;
   transform: translateY(-5%);
 }
@@ -339,21 +338,6 @@ h2 {
 .item-detail-container div a {
   font: inherit;
   font-weight: 600;
-  background: black;
-  color: white;
-  border-radius: 30rem;
-  border: 2rem solid black;
-  padding: 0.6em 0.6em;
-  margin: 0.5em auto;
-  display: block;
-  text-decoration: none;
-  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
-  transition: transform 50ms ease-in-out;
-  margin: 0 0.2em;
-}
-.item-detail-container div a:first-of-type {
-  font: inherit;
-  font-weight: 600;
   background: white;
   color: black;
   border-radius: 30rem;
@@ -366,7 +350,22 @@ h2 {
   transition: transform 50ms ease-in-out;
   margin: 0 0.2em;
 }
-.item-detail-container div a:first-of-type:hover {
+.item-detail-container div a:last-of-type {
+  font: inherit;
+  font-weight: 600;
+  background: black;
+  color: white;
+  border-radius: 30rem;
+  border: 2rem solid black;
+  padding: 0.6em 0.6em;
+  margin: 0.5em auto;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 0.5em 1em 1rem rgba(0, 0, 0, 0.05);
+  transition: transform 50ms ease-in-out;
+  margin: 0 0.2em;
+}
+.item-detail-container div a:last-of-type:hover {
   cursor: pointer;
   transform: translateY(-5%);
 }
@@ -477,6 +476,14 @@ h2 {
 .browse-container {
   width: min(880rem, 75vw);
   margin: 2em auto;
+}
+
+.form-errors {
+  color: red;
+  padding: 1em 0;
+  font-weight: 600;
+  font-size: 15rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,6 +1,7 @@
 var Item = require("../models/item");
 var Brand = require("../models/brand");
 var Type = require("../models/type");
+var async = require("async");
 const { body, validationResult } = require("express-validator");
 
 exports.type_list = function (req, res, next) {
@@ -15,12 +16,27 @@ exports.type_list = function (req, res, next) {
 
 // Display detail page for a specific type.
 exports.type_detail = function (req, res, next) {
-  Type.findById(req.params.id).exec(function (err, type) {
-    if (err) {
-      return next(err);
+  async.parallel(
+    {
+      type: function (callback) {
+        Type.findById(req.params.id).exec(callback);
+      },
+      items: function (callback) {
+        Item.find({ type: req.params.id }).exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+
+      res.render("type_detail", {
+        title: "Browse Types",
+        type: results.type,
+        items: results.items,
+      });
     }
-    res.render("type_detail", { title: "Type Detail", type: type });
-  });
+  );
 };
 
 exports.type_edit_get = function (req, res, next) {

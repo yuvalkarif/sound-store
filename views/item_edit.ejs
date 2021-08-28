@@ -52,14 +52,12 @@
       <label for="price">Price:
         <input type="text" id="price" name="price" value="<%=item.price %>" />
       </label>
-     
+      <% if (errors !=null) { %>
+        <% errors.forEach(error => { %>
+            <p class="form-errors"><%=error.msg %> </p>
+        <% }) %>
+      <% } %>
       <button type="submit">Submit</button>
     </form>
-    <% if (errors != null) { %>
-     <% errors.forEach(error => { %>
-        <p><%=error.msg %></p>
-     <% }) %>
-    <% } %>
-    
   </body>
 </html>

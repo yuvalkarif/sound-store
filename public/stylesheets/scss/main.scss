@@ -55,7 +55,7 @@ h2 {
 }
 .item-list-container {
   display: grid;
-  align-items: center;
+  align-items: flex-start;
   grid-template-columns: repeat(auto-fit, minmax(320rem, 1fr));
   grid-gap: 1em;
   max-width: 1280px;
@@ -71,9 +71,7 @@ h2 {
   font-weight: 500;
   box-shadow: 0 0.75em 2em 1rem rgba($color: rgb(60, 42, 100), $alpha: 0.1);
   border-radius: 1em;
-  max-height: fit-content;
-  min-height: 12em;
-
+  min-height: fit-content;
   h4,
   p {
     margin-bottom: 0.1em;
@@ -94,12 +92,13 @@ h2 {
   margin-top: auto;
   padding: 1em 0;
   a {
-    &:first-of-type {
-      @include outline-btn-theme;
+    &:last-of-type {
+      @include block-btn-theme;
       margin: 0 0.2em;
+
       display: block;
     }
-    @include block-btn-theme;
+    @include outline-btn-theme;
     margin: 0 0.2em;
   }
 }
@@ -160,11 +159,12 @@ h2 {
     justify-content: center;
 
     a {
-      &:first-of-type {
-        @include outline-btn-theme;
+      &:last-of-type {
+        @include block-btn-theme;
+
         margin: 0 0.2em;
       }
-      @include block-btn-theme;
+      @include outline-btn-theme;
       margin: 0 0.2em;
     }
   }
@@ -250,4 +250,12 @@ h2 {
 .browse-container {
   width: min(880rem, 75vw);
   margin: 2em auto;
+}
+
+.form-errors {
+  color: $redColor;
+  padding: 1em 0;
+  font-weight: 600;
+  font-size: 15rem;
+  text-align: center;
 }

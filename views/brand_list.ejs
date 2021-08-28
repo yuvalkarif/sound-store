@@ -2,10 +2,11 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets//css/main.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
 
   <body>
+    <%-include ./partials/header.ejs %>
     <h2><%= title %></h2>
     <section class="item-list-container">
       <% brands.forEach(brand=> { %>
@@ -20,7 +21,13 @@
           <a href="<%=brand.url%>">Learn More</a>
         </div>
       </div>
+
       <% }) %>
     </section>
+    <div class="btns">
+      <a href="/catalog/item/">Browse Items</a>
+      <a href="/catalog/type/">Browse Types</a>
+      <a href="brand/add/">Add an Item</a>
+    </div>
   </body>
 </html>

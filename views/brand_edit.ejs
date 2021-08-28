@@ -2,25 +2,32 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %> Overview</p>
-  <body>
-    <h1><%= brand.name %></h1>
 
-    <form method="POST">
-      <label for="name">Brand Name:</label>
-      <input  type="text" name="name" id="name" value="<%=brand.name%>"></input>
-      <label for="origin">Brand Origin:</label>
-      <input type="text" name="origin" id="origin" value="<%=brand.origin%>"></input>
-      <label for="summary">Brand Summary</label>
-      <textarea name="summary" id="summary" value="<%=brand.summary%>"><%=brand.summary%></textarea>
-      <button type="submit">Submit Changes</button>
-      </form>
+  <body>
+    <%-include ./partials/header.ejs  %> 
+    <h2><%= title %></h2>
+    <form method="POST" class="item-edit-container">
+      <label for="name">Brand Name:
+        <input  type="text" name="name" id="name" value="<%=brand.name%>"></input>
+      </label>
+      
+      <label for="origin">Brand Origin:
+        <input type="text" name="origin" id="origin" value="<%=brand.origin%>"></input>
+      </label>
+      
+      <label for="summary">Brand Summary:
+        <textarea name="summary" id="summary" value="<%=brand.summary%>"><%=brand.summary%></textarea>
+      </label>
       <% if (errors !=null) { %>
         <% errors.forEach(error => { %>
-            <p><%=error.msg %> </p>
+            <p class="form-errors"><%=error.msg %> </p>
         <% }) %>
       <% } %>
+      
+      <button type="submit">Submit Changes</button>
+      </form>
+    
   </body>
 </html>
