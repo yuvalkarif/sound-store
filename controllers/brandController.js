@@ -199,7 +199,6 @@ exports.brand_delete_get = function (req, res, next) {
       if (err) {
         return next(err);
       }
-      console.log(results.items);
       res.render("brand_delete", {
         title: "Delete Brand",
         brand: results.brand,

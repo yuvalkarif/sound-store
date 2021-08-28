@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
+  </head>
+  <body>
+    <%-include ./partials/header.ejs %>
+    <h2><%= title %></h2>
+    <section class="item-detail-container">
+      <h3><%=type.attr%></h3>
+      <h4><%=type.connection%></h4>
+
+      <form class="delete-form" method="POST">
+        <% if (items!="") { %>
+        <p>Delete all of the type Items before deleting the Type!</p>
+        <% } else { %>
+        <p>Are you sure you want to delete this item?</p>
+        <button type="submit">Delete</button>
+        <% } %>
+      </form>
+    </section>
+    <section class="browse-container">
+      <% if (items=="") { %>
+      <h2>There are currently no items by this Type</h2>
+
+      <% } else { %>
+      <h2>Browse the Brand Products</h2>
+      <%-include ./partials/items_list.ejs%> <% } %>
+    </section>
+  </body>
+</html>

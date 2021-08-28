@@ -27,6 +27,10 @@ router.post("/brand/:id/edit", brand_controller.brand_edit_post);
 
 //---Type-Routers---//
 router.get("/type", type_controller.type_list);
+router.get("/type/:id/delete", type_controller.type_delete_get);
+router.post("/type/:id/delete", type_controller.type_delete_post);
+router.get("/type/add", type_controller.type_add_get);
+router.post("/type/add", type_controller.type_add_post);
 router.get("/type/:id", type_controller.type_detail);
 router.get("/type/:id/edit", type_controller.type_edit_get);
 router.post("/type/:id/edit", type_controller.type_edit_post);

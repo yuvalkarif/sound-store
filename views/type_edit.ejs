@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
   </head>
-  <p>Welcome to the <%= title %></p>
+
   <body>
-    <h1><%= title %></h1>
+    <%-include ./partials/header.ejs %>
+    <h2><%= title %></h2>
+    <form class="item-edit-container" method="POST">
+      <label for="attr"
+        >Attribute:
+        <input type="text" name="attr" value="<%=type.attr%>" />
+      </label>
 
-    <form method="POST">
-      <label for="attr">Attribute:</label>
-      <input type="text" name="attr" value="<%=type.attr%>" />
+      <label for="connection"
+        >Connection:
+        <input type="text" name="connection" value="<%=type.connection%>" />
+      </label>
 
-      <label for="connection">Connection:</label>
-      <input type="text" name="connection" value="<%=type.connection%>" />
       <button type="submit">Submit</button>
     </form>
     <% if (errors != null) { %> <% errors.forEach(error => { %>

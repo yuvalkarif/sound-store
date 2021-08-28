@@ -8,13 +8,12 @@
   <body>
     <%-include ./partials/header.ejs %>
     <h2><%= title %></h2>
-    <section class="item-list-container">
-      <div class="item-container">
-        <h3><%=type.attr%></h3>
-        <h4><%= type.connection %></h4>
-        <div class="btns">
-          <a href="<%=type.url%>">Learn More</a>
-        </div>
+    <section class="item-detail-container">
+      <h3><%=type.attr%></h3>
+      <h4><%= type.connection %></h4>
+      <div class="btns">
+        <a href="<%=type.url%>/edit">Edit</a>
+        <a href="<%=type.url%>/delete">Delete</a>
       </div>
     </section>
     <section class="browse-container">
