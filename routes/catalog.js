@@ -17,9 +17,14 @@ router.get("/item/:id/edit", item_controller.item_edit_get);
 router.post("/item/:id/edit", item_controller.item_edit_post);
 //---Brand-Routers---//
 router.get("/brand", brand_controller.brand_list);
+router.get("/brand/add", brand_controller.brand_add_get);
+router.post("/brand/add", brand_controller.brand_add_post);
+router.get("/brand/:id/delete", brand_controller.brand_delete_get);
+router.post("/brand/:id/delete", brand_controller.brand_delete_post);
 router.get("/brand/:id", brand_controller.brand_detail);
 router.get("/brand/:id/edit", brand_controller.brand_edit_get);
 router.post("/brand/:id/edit", brand_controller.brand_edit_post);
+
 //---Type-Routers---//
 router.get("/type", type_controller.type_list);
 router.get("/type/:id", type_controller.type_detail);

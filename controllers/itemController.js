@@ -117,7 +117,6 @@ exports.item_add_post = [
           }
           editedItem.type = results.itemType;
           editedItem.brand = results.itemBrand;
-          console.log(errors);
           res.render("item_edit", {
             title: "Item Edit",
             item: editedItem,
@@ -160,8 +159,7 @@ exports.item_delete_get = function (req, res, next) {
 
 // Handle item delete on POST.
 exports.item_delete_post = function (req, res) {
-  Item.findByIdAndDelete(req.params.id)
-  .exec(function (err, item) {
+  Item.findByIdAndDelete(req.params.id).exec(function (err, item) {
     if (err) {
       return next(err);
     }

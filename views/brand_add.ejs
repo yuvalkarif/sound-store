@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/css/main.css" />
+  </head>
+
+  <body>
+    <%-include ./partials/header.ejs  %> 
+    <h2><%= title %></h2>0
+    <form method="POST" class="item-edit-container">
+       
+      <label for="name">Brand Name:
+        <% if (brand ==null) { %>
+        <input  type="text" name="name" id="name" placeholder="Name of the brand"></input>
+        <% } else { %>
+            <input  type="text" name="name" id="name" value="<%=brand.name%>"></input>
+            <% } %>
+      </label>
+      
+      <label for="origin">Brand Origin:
+          <% if (brand ==null) { %>
+            <input type="text" name="origin" id="origin" placeholder="Brand Origin Country"></input>
+          <% } else { %>
+          <input  type="text" name="origin" id="origin" value="<%=brand.origin%>"></input>
+          <% } %>
+      </label>
+      
+      <label for="summary">Brand Summary:
+        <% if (brand == null) { %>
+        <textarea name="summary" id="summary" placeholder="Summary of the brand in a few words"></textarea>
+        <% } else { %>
+            <textarea name="summary" id="summary" value="<%=brand.summary%>"><%=brand.summary%></textarea>
+            <% } %>
+      </label>
+      <% if (errors !=null) { %>
+        <% errors.forEach(error => { %>
+            <p class="form-errors"><%=error.msg %> </p>
+        <% }) %>
+      <% } %>
+      
+      <button type="submit">Submit Changes</button>
+      </form>
+    
+  </body>
+</html>

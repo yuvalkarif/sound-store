@@ -21,8 +21,12 @@
       </div>
     </section>
     <section class="browse-container">
+      <% if (items=="") { %>
+      <h2>There are currently no items by this Brand</h2>
+
+      <% } else { %>
       <h2>Browse the Brand Products</h2>
-      <%-include ./partials/items_list.ejs%>
+      <%-include ./partials/items_list.ejs%> <% } %>
     </section>
   </body>
 </html>
