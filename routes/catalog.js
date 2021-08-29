@@ -8,7 +8,7 @@ var type_controller = require("../controllers/typeController");
 /* GET home page. */
 //---Item-Routers---//
 router.get("/", function (req, res, next) {
-  res.redirect("/item");
+  res.redirect("/catalog/item");
 });
 router.get("/item", item_controller.item_list);
 router.get("/item/add", item_controller.item_add_get);
