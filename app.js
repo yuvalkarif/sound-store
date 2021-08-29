@@ -22,7 +22,6 @@ var mongoose = require("mongoose");
 var dev_db_url =
   "DB_KEY=mongodb+srv://apoxtpi:23121999Yk@cluster0.82aps.mongodb.net/sound-store-db?retryWrites=true&w=majority";
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
-var mongoDB = process.env.DB_KEY;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
